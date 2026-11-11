@@ -12,9 +12,11 @@ A reusable starting point for projects in the Mechanical Engineering Department.
 
 ## Project overview
 
-- **Project name:** [Enter project name]
+- **Project name:** Bus Swing-Plug Door Mechanism
 - **Problem / purpose:** [Describe the engineering need]
-- **Team:** [Names and responsibilities]
+- **Team:** 1. 6730305221 Pannaporn Kawil
+            2. 6730376821 Pimmada Phayoongtham
+            3. 6730547821 Suphitchaya Kongthai
 - **Status:** Planning
 - **Last updated:** [YYYY-MM-DD]
 
