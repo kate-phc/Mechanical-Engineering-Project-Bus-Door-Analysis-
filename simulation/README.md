@@ -101,56 +101,6 @@ $$\omega_3=\frac{r_2\,\omega_2\sin(\theta_4-\theta_2)}{r_3\sin(\theta_3-\theta_4
 For the parallelogram this reduces to $\omega_3 = 0$ and $\omega_4 = \omega_2$, and the door velocity is
 
 $$\mathbf{v}_{\text{door}}=r_2\,\omega_2\begin{bmatrix}-\sin\theta_2\\ \cos\theta_2\end{bmatrix},\qquad \left|\mathbf{v}_{\text{door}}\right|=r_2\left|\omega_2\right|$$
-## Acceleration Analysis
-
-Differentiating a second time gives a linear system in $\alpha_3$ and $\alpha_4$ with the same coefficient matrix:
-
-$$\begin{aligned}
-A&=r_4\sin\theta_4,\quad B=r_3\sin\theta_3,\quad D=r_4\cos\theta_4,\quad E=r_3\cos\theta_3\\
-C&=r_2\alpha_2\sin\theta_2+r_2\omega_2^2\cos\theta_2+r_3\omega_3^2\cos\theta_3-r_4\omega_4^2\cos\theta_4\\
-F&=r_2\alpha_2\cos\theta_2-r_2\omega_2^2\sin\theta_2-r_3\omega_3^2\sin\theta_3+r_4\omega_4^2\sin\theta_4\\
-\alpha_3&=\frac{CD-AF}{AE-BD},\qquad \alpha_4=\frac{CE-BF}{AE-BD}
-\end{aligned}$$
-
-For the parallelogram this reduces to $\alpha_3 = 0$ and $\alpha_4 = \alpha_2$. The door acceleration has a tangential and a normal component:
-
-$$\mathbf{a}_{\text{door}}=r_2\,\alpha_2\begin{bmatrix}-\sin\theta_2\\ \cos\theta_2\end{bmatrix}-r_2\,\omega_2^2\begin{bmatrix}\cos\theta_2\\ \sin\theta_2\end{bmatrix},\qquad
-\left|\mathbf{a}_{\text{door}}\right|=r_2\sqrt{\alpha_2^2+\omega_2^4}$$
-## Input Motion
-
-The motor angle is the same sinusoidal input used in Simscape ($A_m$ = 0.7 rad, $\Omega$ = 0.5 rad/s, $\phi$ = 3π/2 rad). The phase starts the motor at its extreme position with zero velocity, which corresponds to the closed door. The gear pair (Z = 30 driving Z = 15) doubles the angle and reverses the direction:
-
-$$\theta_m(t)=0.7\sin\left(0.5t+\tfrac{3\pi}{2}\right)=-0.7\cos(0.5t),\qquad
-\theta_2(t)=\pi-\frac{N_{30}}{N_{15}}\left[\theta_m(t)-\theta_m(0)\right]$$
-$$\theta_2(t)=\pi-1.4\left(1-\cos 0.5t\right),\qquad
-\omega_2(t)=-0.7\sin(0.5t),\qquad
-\alpha_2(t)=-0.35\cos(0.5t)$$
-
-Gear Train Detail
-
-## Analysis Results
-
-Over one 12.6 s cycle the rod sweeps 160.43° (θ₂ from 180° to 19.57°) and returns. The door translates along a circular arc of radius $r_2$ = 88.995 mm, giving a net lateral opening width of ∆x = 172.8 mm, a peak outward clearance of ∆y_max = 89.0 mm at t = 3.39 s, and a fully open outward offset of ∆y_open = 29.8 mm. The door reaches its maximum speed of 62.30 mm/s and maximum acceleration of 43.61 mm/s² at t = π s, when the rod passes θ₂ ≈ 100°. The door angular velocity and acceleration are zero throughout ($\omega_3 = \alpha_3 = 0$).
-
-Quantity	Maximum	Time (s)
-Rod angular velocity |ω₂| = |ω₄|	0.700 rad/s	π, 3π
-Rod angular acceleration |α₂| = |α₄|	0.350 rad/s²	0, 2π, 4π
-Motor angular velocity |ωₘ|	0.350 rad/s	π, 3π
-Door speed |v|	62.30 mm/s	π, 3π
-Door acceleration |a|	43.61 mm/s²	π, 3π
-## Change Point
-
-The general solutions contain $\sin(\theta_3-\theta_4)$ in the denominator, which vanishes when all four links are collinear at $\theta_2 = \theta_1 = 177.138^\circ$ (t ≈ 0.536 s and t ≈ 12.030 s). At this change point the general expressions become 0/0 and a physical parallelogram linkage may switch to the crossed (anti-parallelogram) branch. The analysis follows the parallelogram branch defined by the CAD assembly, for which $\omega_3 = 0$, $\omega_4 = \omega_2$, $\alpha_3 = 0$, and $\alpha_4 = \alpha_2$ remain valid through the change point.
-
-Verification against Simscape Multibody
-Quantity	Symbolic Analysis	Simscape Multibody
-Net lateral opening width ∆x	172.8 mm	172.8 mm
-Peak outward clearance ∆y_max	89.0 mm	89 mm
-Fully open outward offset ∆y_open	29.8 mm	29.8 mm
-Crank sweep	160.43°	0° to 160°
-Door rotation	0	0
-
-The symbolic results agree with the Simscape Multibody simulation, confirming the closed-form kinematic model.
 
 
-![Result Grap](../media/Door kinematics - results.png) | ![Top view simulation](../media/Door mechanism- top view.png) 
+
