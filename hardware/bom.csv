@@ -1,2 +1,9 @@
 item,description,manufacturer,part_number,quantity,unit,unit_cost,currency,supplier,url,notes
-1,[Component or material],[Manufacturer],[Part number],1,pcs,,,[Supplier],,[Specification or selection note]
+1,PLA Filament 1.75mm (Black),R3D,PLA-1.75-BLK,161.10,g,0.32,THB,Shopee,,80.55g x2 incl. reprints (320 THB/1kg spool)
+2,PLA Filament 1.75mm (Pink),R3D,PLA-1.75-PNK,76.06,g,0.32,THB,Shopee,,38.03g x2 incl. reprints (320 THB/1kg spool)
+3,PLA Filament 1.75mm (White),R3D,PLA-1.75-WHT,95.08,g,0.32,THB,Shopee,,47.54g x2 incl. reprints (320 THB/1kg spool)
+4,PLA Filament 1.75mm (Red),R3D,PLA-1.75-RED,9.90,g,0.32,THB,Shopee,,4.95g x2 incl. reprints (320 THB/1kg spool)
+5,Machine Screw M3x10,Generic,DIN 7985 / M3x10,4,pcs,1.00,THB,MI Lab (Ref: Market price),,Obtained from MI Lab; estimated unit cost
+6,Machine Screw M3x15,Generic,DIN 7985 / M3x15,1,pcs,1.00,THB,MI Lab (Ref: Market price),,Obtained from MI Lab; estimated unit cost
+7,Hex Nut M3,Generic,DIN 934 / M3,6,pcs,0.50,THB,MI Lab (Ref: Market price),,Obtained from MI Lab; estimated unit cost
+8,External Retaining Ring 6mm,Generic,DIN 471 / 6mm,1,pcs,5.00,THB,Advisor (Ref: Market price),,Obtained from advisor; estimated unit cost
