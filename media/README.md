@@ -8,3 +8,4 @@
 * `position_rod_angle_time_multibody.png` — Time-series Door Displacement and Rod Angle (`Scope`) from Multibody Simulation
 * `3d_simulation.avi` — 3D Isometric Simulation Video
 * `3d_simulation_top_view.avi` — Top-view Simulation Video
+* `Door kinematics - results` -result graph from Symbolic analysis 
