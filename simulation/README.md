@@ -162,7 +162,7 @@ F&=r_2\alpha_2\cos\theta_2-r_2\omega_2^2\sin\theta_2-r_3\omega_3^2\sin\theta_3+r
 
 | Top-View Symbolic Animation | Position, Angle, Velocity & Acceleration vs. Time |
 | :---: | :---: |
-| ![Top-View Symbolic Animation](../media/symbolic_top_view_animation.png) | ![Symbolic Results Plots](../media/results_graph_matlab.png) | |
+| ![Top-View Symbolic Animation](../media/simulation_matlab_top_view.png) | ![Symbolic Results Plots](../media/results_graph_matlab.png) |
 
 ### Modeling Assumptions (Symbolic Simulation)
 
