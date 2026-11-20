@@ -43,64 +43,30 @@
 
 ## Symbolic Kinematic Analysis
 
-  A symbolic kinematic analysis of the door mechanism was carried out in MATLAB Symbolic Math Toolbox to obtain closed-form expressions for the position, velocity, and acceleration of every link and of the door panel. Forces and inertia are not considered. All link lengths and pivot locations were taken directly from the B-rep of the CAD model (`redo2.step`), and the input motion is the same sinusoidal motor angle used in the Simscape Multibody model, so both analyses share identical geometry and boundary conditions.
-
-  All pivot axes are parallel to the CAD z-axis, so the mechanism moves in the XY plane (top view). Angles are measured counter-clockwise from the +X axis and lengths are in millimetres, expressed in the global coordinates of the STEP file.
-
-| Link Dimensions (Closed Position) | Vector Loop (θ₂ = 110°) |
-| :---: | :---: |
-| ![Link Dimensions](../media/symbolic_link_dimensions.png) | ![Vector Loop](../media/symbolic_vector_loop.png) |
-
-### Geometry from CAD
-
-  The pivot locations are the centres of the circular pin and bore edges of each part. Opposite links have equal length ($r_1 = r_3$, $r_2 = r_4$), confirming that the mechanism is a **parallelogram four-bar linkage**.
-
-| Point | Part | X (mm) | Y (mm) |
-| :---: | :--- | ---: | ---: |
-| O₂ | Rod shaft / driven gear (Z = 15) | 125.788 | −9.433 |
-| A | Door pin on rod | 36.793 | −9.433 |
-| O₄ | Bottom link pin on floor | 41.577 | −5.223 |
-| B | Door pin on bottom link | −47.417 | −5.223 |
-| M | Motor shaft / driving gear (Z = 30) | 124.257 | −28.318 |
-
-| Link | Part | Length (mm) | Angle at Closed Position |
-| :---: | :--- | ---: | ---: |
-| $r_1$ | Ground (O₂ → O₄) | 84.316 | $\theta_1$ = 177.138° |
-| $r_2$ | Rod, input crank (O₂ → A) | 88.995 | $\theta_2$ = 180° |
-| $r_3$ | Door, coupler (A → B) | 84.316 | $\theta_3$ = 177.138° |
-| $r_4$ | Bottom link, rocker (O₄ → B) | 88.995 | $\theta_4$ = 180° |
+  A symbolic kinematic analysis of the door mechanism was carried out in MATLAB Symbolic Math Toolbox to obtain closed-form expressions for the position, velocity, and acceleration of every link and of the door panel. Forces and inertia are not considered. All link lengths and pivot locations were taken directly from the B-rep of the CAD model, and the input motion is the same sinusoidal motor angle used in the Simscape Multibody model, so both analyses share identical geometry and boundary conditions.
 
 ### Modeling Assumptions (Symbolic Analysis)
-
-  To match the Simscape Multibody model, the following assumptions were applied:
 -	All bodies are rigid and all revolute joints are frictionless with zero pin clearance.
 -	The gear pair enforces an exact 1:2 kinematic ratio without backlash.
 -	Forces, masses, and motor dynamics are neglected; the motor angle is a prescribed sinusoidal input.
 -	At t = 0 the door is fully closed ($\theta_2 = 180^\circ$).
 
 ### Position Analysis
-
   The four links form a closed loop, so the vector sum around O₂ → A → B → O₄ → O₂ must vanish:
-
 ```math
 \mathbf{R}_2+\mathbf{R}_3-\mathbf{R}_4-\mathbf{R}_1=\mathbf{0}
 ```
-
 ```math
 \begin{aligned}
 r_2\cos\theta_2+r_3\cos\theta_3-r_4\cos\theta_4-r_1\cos\theta_1&=0\\
 r_2\sin\theta_2+r_3\sin\theta_3-r_4\sin\theta_4-r_1\sin\theta_1&=0
 \end{aligned}
 ```
-
   Substituting the parallelogram condition $r_3 = r_1$, $r_4 = r_2$ shows that the loop is satisfied for every input angle by
-
 ```math
 \theta_3=\theta_1=177.138^\circ\ (\text{constant}),\qquad \theta_4=\theta_2
 ```
-
   The door therefore translates without rotating, and every point on it moves by the same displacement as pin A:
-
 ```math
 \mathbf{r}_A=r_2\begin{bmatrix}\cos\theta_2\\ \sin\theta_2\end{bmatrix},\qquad
 \mathbf{r}_{\text{door}}(t)=\mathbf{r}_{\text{door}}(0)+\left[\mathbf{r}_A(t)-\mathbf{r}_A(0)\right]
@@ -150,19 +116,15 @@ F&=r_2\alpha_2\cos\theta_2-r_2\omega_2^2\sin\theta_2-r_3\omega_3^2\sin\theta_3+r
 ### Input Motion
 
   The motor angle is the same sinusoidal input used in Simscape ($A_m$ = 0.7 rad, $\Omega$ = 0.5 rad/s, $\phi$ = 3π/2 rad). The phase starts the motor at its extreme position with zero velocity, which corresponds to the closed door. The gear pair (Z = 30 driving Z = 15) doubles the angle and reverses the direction:
-
 ```math
 \theta_m(t)=0.7\sin\left(0.5t+\tfrac{3\pi}{2}\right)=-0.7\cos(0.5t),\qquad
 \theta_2(t)=\pi-\frac{N_{30}}{N_{15}}\left[\theta_m(t)-\theta_m(0)\right]
 ```
-
 ```math
 \theta_2(t)=\pi-1.4\left(1-\cos 0.5t\right),\qquad
 \omega_2(t)=-0.7\sin(0.5t),\qquad
 \alpha_2(t)=-0.35\cos(0.5t)
 ```
-
-![Gear Train Detail](../media/symbolic_gear_detail.png)
 
 ### Analysis Results
 
@@ -192,15 +154,9 @@ F&=r_2\alpha_2\cos\theta_2-r_2\omega_2^2\sin\theta_2-r_3\omega_3^2\sin\theta_3+r
 
   The symbolic results agree with the Simscape Multibody simulation, confirming the closed-form kinematic model.
 
-### Supporting Files (Symbolic Analysis)
+# Symbolic Simulation (MATLAB)
 
-* **Full Equation Document:** [`door_kinematics_equations.docx`](door_kinematics_equations.docx)
-* **MATLAB Symbolic Simulation:** [`door_topview_sim_fixtimeee.m`](door_topview_sim_fixtimeee.m)
-
-
-## Symbolic Simulation (MATLAB)
-
-  In addition to the Simscape model, a symbolic top-view simulation was written in MATLAB (Symbolic Math Toolbox). The vector-loop equations of the four-bar linkage are differentiated symbolically to obtain the angular velocities and accelerations of all links, the sinusoidal motor angle is passed through the 1:2 gear ratio to give the rod angle $\theta_2(t)$, and the resulting expressions are converted to numeric functions with `matlabFunction`. The derivation is given in [Symbolic Kinematic Analysis](#symbolic-kinematic-analysis).
+  In addition to the Simscape model, a symbolic top-view simulation was written in MATLAB (Symbolic Math Toolbox). The vector-loop equations of the four-bar linkage are differentiated symbolically to obtain the angular velocities and accelerations of all links, the sinusoidal motor angle is passed through the 1:2 gear ratio to give the rod angle $\theta_2(t)$, and the resulting expressions are converted to numeric functions with `matlabFunction`. 
 
   Every part (floor, wall, motor, both gears, U-shaped rod, bottom link, and door) is drawn from primitive shapes using the exact dimensions from the CAD model and placed in its own `hgtransform` group. At each frame the rod and driven gear rotate about O₂, the bottom link rotates about O₄ by the same angle, the driving gear rotates about the motor axis by half the angle in the opposite direction, and the door translates without rotation. The link lines, pivot points, door path, and the door velocity and acceleration vectors are overlaid on the animation.
 
