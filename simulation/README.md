@@ -41,66 +41,188 @@
 
 
 
-# Symbolic Kinematic Analysis
+## Symbolic Kinematic Analysis
 
-A symbolic kinematic analysis of the door mechanism was carried out in MATLAB Symbolic Math Toolbox to obtain closed-form expressions for the position, velocity, and acceleration of every link and of the door panel. Forces and inertia are not considered. All link lengths and pivot locations were taken directly from the B-rep of the CAD model (redo2.step), and the input motion is the same sinusoidal motor angle used in the Simscape Multibody model, so both analyses share identical geometry and boundary conditions.
-All pivot axes are parallel to the CAD z-axis, so the mechanism moves in the XY plane (top view). Angles are measured counter-clockwise from the +X axis and lengths are in millimetres, expressed in the global coordinates of the STEP file.
-Link Dimensions (Closed Position)	Vector Loop (θ₂ = 110°)
-Link Dimensions	Vector Loop
-## Geometry from CAD
-The pivot locations are the centres of the circular pin and bore edges of each part. 
-Opposite links have equal length ($r_1 = r_3$, $r_2 = r_4$), confirming that the mechanism is a parallelogram four-bar linkage.
+  A symbolic kinematic analysis of the door mechanism was carried out in MATLAB Symbolic Math Toolbox to obtain closed-form expressions for the position, velocity, and acceleration of every link and of the door panel. Forces and inertia are not considered. All link lengths and pivot locations were taken directly from the B-rep of the CAD model (`redo2.step`), and the input motion is the same sinusoidal motor angle used in the Simscape Multibody model, so both analyses share identical geometry and boundary conditions.
 
-Point	Part	X (mm)	Y (mm)
-O₂	Rod shaft / driven gear (Z = 15)	125.788	−9.433
-A	Door pin on rod	36.793	−9.433
-O₄	Bottom link pin on floor	41.577	−5.223
-B	Door pin on bottom link	−47.417	−5.223
-M	Motor shaft / driving gear (Z = 30)	124.257	−28.318
-Link	Part	Length (mm)	Angle at Closed Position
-$r_1$	Ground (O₂ → O₄)	84.316	$\theta_1$ = 177.138°
-$r_2$	Rod, input crank (O₂ → A)	88.995	$\theta_2$ = 180°
-$r_3$	Door, coupler (A → B)	84.316	$\theta_3$ = 177.138°
-$r_4$	Bottom link, rocker (O₄ → B)	88.995	$\theta_4$ = 180°
+  All pivot axes are parallel to the CAD z-axis, so the mechanism moves in the XY plane (top view). Angles are measured counter-clockwise from the +X axis and lengths are in millimetres, expressed in the global coordinates of the STEP file.
 
-## Modeling Assumptions
-To match the Simscape Multibody model, the following assumptions were applied:
+| Link Dimensions (Closed Position) | Vector Loop (θ₂ = 110°) |
+| :---: | :---: |
+| ![Link Dimensions](../media/symbolic_link_dimensions.png) | ![Vector Loop](../media/symbolic_vector_loop.png) |
 
-All bodies are rigid and all revolute joints are frictionless with zero pin clearance.
-The gear pair enforces an exact 1:2 kinematic ratio without backlash.
-Forces, masses, and motor dynamics are neglected; the motor angle is a prescribed sinusoidal input.
-At t = 0 the door is fully closed ($\theta_2 = 180^\circ$).
-## Position Analysis
+### Geometry from CAD
 
-The four links form a closed loop, so the vector sum around O₂ → A → B → O₄ → O₂ must vanish:
+  The pivot locations are the centres of the circular pin and bore edges of each part. Opposite links have equal length ($r_1 = r_3$, $r_2 = r_4$), confirming that the mechanism is a **parallelogram four-bar linkage**.
 
-$$\mathbf{R}_2+\mathbf{R}_3-\mathbf{R}_4-\mathbf{R}_1=\mathbf{0}$$
-$$\begin{aligned}
+| Point | Part | X (mm) | Y (mm) |
+| :---: | :--- | ---: | ---: |
+| O₂ | Rod shaft / driven gear (Z = 15) | 125.788 | −9.433 |
+| A | Door pin on rod | 36.793 | −9.433 |
+| O₄ | Bottom link pin on floor | 41.577 | −5.223 |
+| B | Door pin on bottom link | −47.417 | −5.223 |
+| M | Motor shaft / driving gear (Z = 30) | 124.257 | −28.318 |
+
+| Link | Part | Length (mm) | Angle at Closed Position |
+| :---: | :--- | ---: | ---: |
+| $r_1$ | Ground (O₂ → O₄) | 84.316 | $\theta_1$ = 177.138° |
+| $r_2$ | Rod, input crank (O₂ → A) | 88.995 | $\theta_2$ = 180° |
+| $r_3$ | Door, coupler (A → B) | 84.316 | $\theta_3$ = 177.138° |
+| $r_4$ | Bottom link, rocker (O₄ → B) | 88.995 | $\theta_4$ = 180° |
+
+### Modeling Assumptions (Symbolic Analysis)
+
+  To match the Simscape Multibody model, the following assumptions were applied:
+-	All bodies are rigid and all revolute joints are frictionless with zero pin clearance.
+-	The gear pair enforces an exact 1:2 kinematic ratio without backlash.
+-	Forces, masses, and motor dynamics are neglected; the motor angle is a prescribed sinusoidal input.
+-	At t = 0 the door is fully closed ($\theta_2 = 180^\circ$).
+
+### Position Analysis
+
+  The four links form a closed loop, so the vector sum around O₂ → A → B → O₄ → O₂ must vanish:
+
+```math
+\mathbf{R}_2+\mathbf{R}_3-\mathbf{R}_4-\mathbf{R}_1=\mathbf{0}
+```
+
+```math
+\begin{aligned}
 r_2\cos\theta_2+r_3\cos\theta_3-r_4\cos\theta_4-r_1\cos\theta_1&=0\\
 r_2\sin\theta_2+r_3\sin\theta_3-r_4\sin\theta_4-r_1\sin\theta_1&=0
-\end{aligned}$$
+\end{aligned}
+```
 
-Substituting the parallelogram condition $r_3 = r_1$, $r_4 = r_2$ shows that the loop is satisfied for every input angle by
+  Substituting the parallelogram condition $r_3 = r_1$, $r_4 = r_2$ shows that the loop is satisfied for every input angle by
 
-$$\theta_3=\theta_1=177.138^\circ\ (\text{constant}),\qquad \theta_4=\theta_2$$
+```math
+\theta_3=\theta_1=177.138^\circ\ (\text{constant}),\qquad \theta_4=\theta_2
+```
 
-The door therefore translates without rotating, and every point on it moves by the same displacement as pin A:
+  The door therefore translates without rotating, and every point on it moves by the same displacement as pin A:
 
-$$\mathbf{r}_A=r_2\begin{bmatrix}\cos\theta_2\\ \sin\theta_2\end{bmatrix},\qquad
-\mathbf{r}_{\text{door}}(t)=\mathbf{r}_{\text{door}}(0)+\left[\mathbf{r}_A(t)-\mathbf{r}_A(0)\right]$$
-## Velocity Analysis
+```math
+\mathbf{r}_A=r_2\begin{bmatrix}\cos\theta_2\\ \sin\theta_2\end{bmatrix},\qquad
+\mathbf{r}_{\text{door}}(t)=\mathbf{r}_{\text{door}}(0)+\left[\mathbf{r}_A(t)-\mathbf{r}_A(0)\right]
+```
 
-Differentiating the loop equations with respect to time gives a linear system in $\omega_3$ and $\omega_4$:
+### Velocity Analysis
 
-$$\begin{bmatrix}-r_3\sin\theta_3 & r_4\sin\theta_4\\ r_3\cos\theta_3 & -r_4\cos\theta_4\end{bmatrix}
+  Differentiating the loop equations with respect to time gives a linear system in $\omega_3$ and $\omega_4$:
+
+```math
+\begin{bmatrix}-r_3\sin\theta_3 & r_4\sin\theta_4\\ r_3\cos\theta_3 & -r_4\cos\theta_4\end{bmatrix}
 \begin{bmatrix}\omega_3\\ \omega_4\end{bmatrix}=
-\begin{bmatrix}r_2\omega_2\sin\theta_2\\ -r_2\omega_2\cos\theta_2\end{bmatrix}$$
-$$\omega_3=\frac{r_2\,\omega_2\sin(\theta_4-\theta_2)}{r_3\sin(\theta_3-\theta_4)},\qquad
-\omega_4=\frac{r_2\,\omega_2\sin(\theta_2-\theta_3)}{r_4\sin(\theta_4-\theta_3)}$$
+\begin{bmatrix}r_2\omega_2\sin\theta_2\\ -r_2\omega_2\cos\theta_2\end{bmatrix}
+```
 
-For the parallelogram this reduces to $\omega_3 = 0$ and $\omega_4 = \omega_2$, and the door velocity is
+```math
+\omega_3=\frac{r_2\,\omega_2\sin(\theta_4-\theta_2)}{r_3\sin(\theta_3-\theta_4)},\qquad
+\omega_4=\frac{r_2\,\omega_2\sin(\theta_2-\theta_3)}{r_4\sin(\theta_4-\theta_3)}
+```
 
-$$\mathbf{v}_{\text{door}}=r_2\,\omega_2\begin{bmatrix}-\sin\theta_2\\ \cos\theta_2\end{bmatrix},\qquad \left|\mathbf{v}_{\text{door}}\right|=r_2\left|\omega_2\right|$$
+  For the parallelogram this reduces to $\omega_3 = 0$ and $\omega_4 = \omega_2$, and the door velocity is
+
+```math
+\mathbf{v}_{\text{door}}=r_2\,\omega_2\begin{bmatrix}-\sin\theta_2\\ \cos\theta_2\end{bmatrix},\qquad \left|\mathbf{v}_{\text{door}}\right|=r_2\left|\omega_2\right|
+```
+
+### Acceleration Analysis
+
+  Differentiating a second time gives a linear system in $\alpha_3$ and $\alpha_4$ with the same coefficient matrix:
+
+```math
+\begin{aligned}
+A&=r_4\sin\theta_4,\quad B=r_3\sin\theta_3,\quad D=r_4\cos\theta_4,\quad E=r_3\cos\theta_3\\
+C&=r_2\alpha_2\sin\theta_2+r_2\omega_2^2\cos\theta_2+r_3\omega_3^2\cos\theta_3-r_4\omega_4^2\cos\theta_4\\
+F&=r_2\alpha_2\cos\theta_2-r_2\omega_2^2\sin\theta_2-r_3\omega_3^2\sin\theta_3+r_4\omega_4^2\sin\theta_4\\
+\alpha_3&=\frac{CD-AF}{AE-BD},\qquad \alpha_4=\frac{CE-BF}{AE-BD}
+\end{aligned}
+```
+
+  For the parallelogram this reduces to $\alpha_3 = 0$ and $\alpha_4 = \alpha_2$. The door acceleration has a tangential and a normal component:
+
+```math
+\mathbf{a}_{\text{door}}=r_2\,\alpha_2\begin{bmatrix}-\sin\theta_2\\ \cos\theta_2\end{bmatrix}-r_2\,\omega_2^2\begin{bmatrix}\cos\theta_2\\ \sin\theta_2\end{bmatrix},\qquad
+\left|\mathbf{a}_{\text{door}}\right|=r_2\sqrt{\alpha_2^2+\omega_2^4}
+```
+
+### Input Motion
+
+  The motor angle is the same sinusoidal input used in Simscape ($A_m$ = 0.7 rad, $\Omega$ = 0.5 rad/s, $\phi$ = 3π/2 rad). The phase starts the motor at its extreme position with zero velocity, which corresponds to the closed door. The gear pair (Z = 30 driving Z = 15) doubles the angle and reverses the direction:
+
+```math
+\theta_m(t)=0.7\sin\left(0.5t+\tfrac{3\pi}{2}\right)=-0.7\cos(0.5t),\qquad
+\theta_2(t)=\pi-\frac{N_{30}}{N_{15}}\left[\theta_m(t)-\theta_m(0)\right]
+```
+
+```math
+\theta_2(t)=\pi-1.4\left(1-\cos 0.5t\right),\qquad
+\omega_2(t)=-0.7\sin(0.5t),\qquad
+\alpha_2(t)=-0.35\cos(0.5t)
+```
+
+![Gear Train Detail](../media/symbolic_gear_detail.png)
+
+### Analysis Results
+
+  Over one 12.6 s cycle the rod sweeps 160.43° (θ₂ from 180° to 19.57°) and returns. The door translates along a circular arc of radius $r_2$ = 88.995 mm, giving a net lateral opening width of ∆x = 172.8 mm, a peak outward clearance of ∆y_max = 89.0 mm at t = 3.39 s, and a fully open outward offset of ∆y_open = 29.8 mm. The door reaches its maximum speed of 62.30 mm/s and maximum acceleration of 43.61 mm/s² at t = π s, when the rod passes θ₂ ≈ 100°. The door angular velocity and acceleration are zero throughout ($\omega_3 = \alpha_3 = 0$).
+
+| Quantity | Maximum | Time (s) |
+| :--- | ---: | :---: |
+| Rod angular velocity \|ω₂\| = \|ω₄\| | 0.700 rad/s | π, 3π |
+| Rod angular acceleration \|α₂\| = \|α₄\| | 0.350 rad/s² | 0, 2π, 4π |
+| Motor angular velocity \|ωₘ\| | 0.350 rad/s | π, 3π |
+| Door speed \|v\| | 62.30 mm/s | π, 3π |
+| Door acceleration \|a\| | 43.61 mm/s² | π, 3π |
+
+### Change Point
+
+  The general solutions contain $\sin(\theta_3-\theta_4)$ in the denominator, which vanishes when all four links are collinear at $\theta_2 = \theta_1 = 177.138^\circ$ (t ≈ 0.536 s and t ≈ 12.030 s). At this change point the general expressions become 0/0 and a physical parallelogram linkage may switch to the crossed (anti-parallelogram) branch. The analysis follows the parallelogram branch defined by the CAD assembly, for which $\omega_3 = 0$, $\omega_4 = \omega_2$, $\alpha_3 = 0$, and $\alpha_4 = \alpha_2$ remain valid through the change point.
+
+### Verification against Simscape Multibody
+
+| Quantity | Symbolic Analysis | Simscape Multibody |
+| :--- | ---: | ---: |
+| Net lateral opening width ∆x | 172.8 mm | 172.8 mm |
+| Peak outward clearance ∆y_max | 89.0 mm | 89 mm |
+| Fully open outward offset ∆y_open | 29.8 mm | 29.8 mm |
+| Crank sweep | 160.43° | 0° to 160° |
+| Door rotation | 0 | 0 |
+
+  The symbolic results agree with the Simscape Multibody simulation, confirming the closed-form kinematic model.
+
+### Supporting Files (Symbolic Analysis)
+
+* **Full Equation Document:** [`door_kinematics_equations.docx`](door_kinematics_equations.docx)
+* **MATLAB Symbolic Simulation:** [`door_topview_sim_fixtimeee.m`](door_topview_sim_fixtimeee.m)
 
 
+## Symbolic Simulation (MATLAB)
 
+  In addition to the Simscape model, a symbolic top-view simulation was written in MATLAB (Symbolic Math Toolbox). The vector-loop equations of the four-bar linkage are differentiated symbolically to obtain the angular velocities and accelerations of all links, the sinusoidal motor angle is passed through the 1:2 gear ratio to give the rod angle $\theta_2(t)$, and the resulting expressions are converted to numeric functions with `matlabFunction`. The derivation is given in [Symbolic Kinematic Analysis](#symbolic-kinematic-analysis).
+
+  Every part (floor, wall, motor, both gears, U-shaped rod, bottom link, and door) is drawn from primitive shapes using the exact dimensions from the CAD model and placed in its own `hgtransform` group. At each frame the rod and driven gear rotate about O₂, the bottom link rotates about O₄ by the same angle, the driving gear rotates about the motor axis by half the angle in the opposite direction, and the door translates without rotation. The link lines, pivot points, door path, and the door velocity and acceleration vectors are overlaid on the animation.
+
+| Top-View Symbolic Animation | Position, Angle, Velocity & Acceleration vs. Time |
+| :---: | :---: |
+| ![Top-View Symbolic Animation](../media/symbolic_top_view_animation.png) | ![Symbolic Results Plots](../media/symbolic_results_plots.png) |
+
+### Modeling Assumptions (Symbolic Simulation)
+
+  The symbolic simulation uses the same assumptions as the Simscape model (rigid bodies, ideal joints, exact 1:2 gear ratio, prescribed sinusoidal motor angle). In addition:
+-	The door motion is computed from the parallelogram solution ($\theta_3 = \theta_1$, $\theta_4 = \theta_2$), which is verified symbolically against the general four-bar solution.
+-	Parts are drawn as 2D top-view outlines; gear teeth are simplified trapezoids used only to visualise rotation.
+-	The bottom link (below the floor plate) and the driving gear (below the motor body) are drawn semi-transparent so that their motion remains visible.
+
+### Simulation Results (Symbolic Simulation)
+
+  With the same input ($A_m$ = 0.7 rad, $\Omega$ = 0.5 rad/s, $\phi$ = 3π/2 rad), the rod sweeps 160.43° over a 12.566 s cycle. Both door edges show a net lateral opening width of ∆x = 172.8 mm, a peak outward clearance of ∆y_max = 89.0 mm, and a fully open outward offset of ∆y_open = 29.8 mm, matching the Simscape Multibody results. The rod and bottom link rotate together ($\omega_4 = \omega_2$, peak 0.700 rad/s), while the door angular velocity and acceleration remain zero. The door reaches a maximum speed of 62.30 mm/s and a maximum acceleration of 43.61 mm/s² at t = π s.
+
+### Instructions for Reproducing Results (Symbolic Simulation)
+
+1. Open **MATLAB** (R2020a or later, with Symbolic Math Toolbox) and set the Current Folder to `simulation/`.
+2. Open `door_topview_sim_fixtimeee.m` and click **Run**.
+3. Two windows open: **Door kinematics - results** (six time plots) and **Door mechanism - top view** (animation). Use the **Pause / Play** button to stop or resume the animation.
+4. The link lengths, rod sweep, period, and peak values are printed in the Command Window.
+5. To save the result plots, uncomment the `exportgraphics(figR,'door_results.png');` line.
