@@ -152,6 +152,5 @@ Door rotation	0	0
 
 The symbolic results agree with the Simscape Multibody simulation, confirming the closed-form kinematic model.
 
-Supporting Files
-Full Equation Document: door_kinematics_equations.docx
-MATLAB Symbolic Simulation: door_topview_sim_fixtimeee.m
+
+![Result Grap](../media/Door kinematics - results.png) | ![Top view simulation](../media/Door mechanism- top view.png) 
