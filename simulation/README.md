@@ -39,16 +39,17 @@
 4. Open `simulation/multibody_bus_door_analysis.slx`, and click **Run** to launch the 3D Mechanics Explorer animation and update the **Scope** and **XY Graph** plots.
 5. Open `simulation/Mechanism.mlx` and click **Run All** to generate the symbolic kinematic verification plots.
 
-This document covers the symbolic kinematic analysis. The Simscape Multibody model and the MATLAB symbolic simulation are described in README.md.
 
-#### Symbolic Kinematic Analysis
+
+# Symbolic Kinematic Analysis
 
 A symbolic kinematic analysis of the door mechanism was carried out in MATLAB Symbolic Math Toolbox to obtain closed-form expressions for the position, velocity, and acceleration of every link and of the door panel. Forces and inertia are not considered. All link lengths and pivot locations were taken directly from the B-rep of the CAD model (redo2.step), and the input motion is the same sinusoidal motor angle used in the Simscape Multibody model, so both analyses share identical geometry and boundary conditions.
 All pivot axes are parallel to the CAD z-axis, so the mechanism moves in the XY plane (top view). Angles are measured counter-clockwise from the +X axis and lengths are in millimetres, expressed in the global coordinates of the STEP file.
 Link Dimensions (Closed Position)	Vector Loop (θ₂ = 110°)
 Link Dimensions	Vector Loop
 ## Geometry from CAD
-The pivot locations are the centres of the circular pin and bore edges of each part. Opposite links have equal length ($r_1 = r_3$, $r_2 = r_4$), confirming that the mechanism is a parallelogram four-bar linkage.
+The pivot locations are the centres of the circular pin and bore edges of each part. 
+Opposite links have equal length ($r_1 = r_3$, $r_2 = r_4$), confirming that the mechanism is a parallelogram four-bar linkage.
 
 Point	Part	X (mm)	Y (mm)
 O₂	Rod shaft / driven gear (Z = 15)	125.788	−9.433
