@@ -1,6 +1,5 @@
 # Simulation
 
-Include model files and scripts with solver settings, assumptions, boundary conditions, material properties, and instructions for reproducing results. Identify the software and version used.
 
 ## Simscape Multibody Analysis
 
@@ -30,7 +29,7 @@ Include model files and scripts with solver settings, assumptions, boundary cond
 
 | 2D Door Trajectory (X vs. Y) | Position & Rod Angle vs. Time |
 | :---: | :---: |
-| ![2D Door Trajectory (X-Y)](../media/position_xy.png) | ![Position and Rod Angle vs. Time](../media/position_rod_angle_time.png) |
+| ![2D Door Trajectory (X-Y)](../media/position_xy_multibody.png) | ![Position and Rod Angle vs. Time](../media/position_rod_angle_time_multibody.png) |
 
 ### Instructions for Reproducing Results
 
