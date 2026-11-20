@@ -13,7 +13,7 @@ A reusable starting point for projects in the Mechanical Engineering Department.
 ## Project overview
 
 - **Project name:** Bus Swing-Plug Door Mechanism
-- **Problem / purpose:** [Describe the engineering need]
+- **Problem / purpose:** Conventional inward-folding bus doors intrude into the passenger cabin and reduce standing capacity near the entrance, while standard outward-swinging hinged doors require a wide external clearance radius that poses a collision hazard in tight urban stops. This project simulates a swing-plug bus door mechanism that translates the door panel smoothly outward, maximizing interior cabin space while minimizing the exterior swing envelope.
 - **Team:** 1. 6730305221 Pannaporn Kawil
             2. 6730376821 Pimmada Phayoongtham
             3. 6730547821 Suphitchaya Kongthai
