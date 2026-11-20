@@ -162,7 +162,7 @@ F&=r_2\alpha_2\cos\theta_2-r_2\omega_2^2\sin\theta_2-r_3\omega_3^2\sin\theta_3+r
 
 | Top-View Symbolic Animation | Position, Angle, Velocity & Acceleration vs. Time |
 | :---: | :---: |
-| ![Top-View Symbolic Animation](../media/simulation_matlab_top_view.png) | ![Symbolic Results Plots](../media/results_graph_matlab.png) |
+| ![Top-View Symbolic Animation](../media/simulation_matlab_top_view.png) | ![Symbolic Results Plots](../media/results_graph.png) |
 
 ### Modeling Assumptions (Symbolic Simulation)
 
@@ -178,7 +178,8 @@ F&=r_2\alpha_2\cos\theta_2-r_2\omega_2^2\sin\theta_2-r_3\omega_3^2\sin\theta_3+r
 ### Instructions for Reproducing Results (Symbolic Simulation)
 
 1. Open **MATLAB** (R2020a or later, with Symbolic Math Toolbox) and set the Current Folder to `simulation/`.
-2. Open `door_topview_sim_fixtimeee.m` and click **Run**.
-3. Two windows open: **Door kinematics - results** (six time plots) and **Door mechanism - top view** (animation). Use the **Pause / Play** button to stop or resume the animation.
+2. Open `Symbolic_analysis_simulation` and click **Run**.
+3. Two windows open: **results_graph** (six time plots) and **simulation_matlab_top_view** (animation). Use the **Pause / Play** button to stop or resume the animation.
 4. The link lengths, rod sweep, period, and peak values are printed in the Command Window.
-5. To save the result plots, uncomment the `exportgraphics(figR,'door_results.png');` line.
+
+* **Top-View Simulation From Symbolic MATLAB:** [`Top_view_simulatoion`](../media/door_animation.gif)
