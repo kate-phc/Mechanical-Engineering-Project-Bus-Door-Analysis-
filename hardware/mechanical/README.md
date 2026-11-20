@@ -11,10 +11,7 @@ This directory contains the 3D CAD assembly, 2D engineering drawings, and 3D pri
 
 | 3D CAD Assembly (Fusion 360) | Assembled Physical Prototype |
 | :---: | :---: |
-| ![Full CAD Assembly]<img width="334" height="246" alt="Screenshot 2026-11-21 015353" src="https://github.com/user-attachments/assets/1f4806be-303d-4195-8f0a-3c987dda3127" />|
-
-| ![Physical Prototype]<img width="1108" height="1477" alt="S__27099147" src="https://github.com/user-attachments/assets/da759811-e155-4daf-80ce-94a61eba41c9" />
- |
+| https://github.com/user-attachments/assets/c4239aec-4497-4974-a7ec-507210626183 | <img width="369.333" height="492.333" alt="S__27099147" src="https://github.com/user-attachments/assets/da759811-e155-4daf-80ce-94a61eba41c9" />|
 
 ### Mechanism Operation Demo
 
@@ -60,12 +57,10 @@ During the initial slice and test print of the curved linkage and driving rod as
 
 | Stage | Object/Part Support Settings | Sliced Preview (Plate 03) |
 | :--- | :---: | :---: |
-| **Attempt 1 (Initial):**<br>`tree(auto)`<br>Top/Bottom Z distance: `0.12 mm` | ![Tree Support Settings]<img width="640" height="359" alt="Screenshot 2026-11-21 010643" src="https://github.com/user-attachments/assets/83d4d150-fdde-44f5-84c2-abd7274f4fa4" />
- | ![Tree Support Preview]<img width="332" height="227" alt="Screenshot 2026-11-21 010810" src="https://github.com/user-attachments/assets/271ecb58-4578-4f5f-83f1-0f0f36ef92fe" />
- |
-| **Attempt 2 (Final):**<br>`normal(auto)`<br>Top/Bottom Z distance: `0.18 mm` | ![Normal Support Settings]<img width="640" height="359" alt="Screenshot 2026-11-21 010943" src="https://github.com/user-attachments/assets/0d272fec-e34e-4e8f-b58d-c70bd9c8067d" />
- | ![Normal Support Preview]<img width="340" height="231" alt="Screenshot 2026-11-21 011020" src="https://github.com/user-attachments/assets/b224e619-4dd7-4569-8135-9532adf3e25f" />
- |
+| **Attempt 1 (Initial):**<br>`tree(auto)`<br>Top/Bottom Z distance: `0.12 mm` | <img width="640" height="359" alt="Screenshot 2026-11-21 010643" src="https://github.com/user-attachments/assets/83d4d150-fdde-44f5-84c2-abd7274f4fa4" />
+ | <img width="332" height="227" alt="Screenshot 2026-11-21 010810" src="https://github.com/user-attachments/assets/271ecb58-4578-4f5f-83f1-0f0f36ef92fe" />|
+| **Attempt 2 (Final):**<br>`normal(auto)`<br>Top/Bottom Z distance: `0.18 mm` | <img width="640" height="359" alt="Screenshot 2026-11-21 010943" src="https://github.com/user-attachments/assets/0d272fec-e34e-4e8f-b58d-c70bd9c8067d" />
+ | <img width="340" height="231" alt="Screenshot 2026-11-21 011020" src="https://github.com/user-attachments/assets/b224e619-4dd7-4569-8135-9532adf3e25f" />|
 
 ### 2. Fastener Retention at Revolute Joints (Double-Nut Locking)
 Several revolute joints in the linkage mechanism are fastened using M3 screws and hex nuts. During repeated manual actuation and cyclic testing, friction at the rotating joints caused single nuts to gradually back off and loosen.
