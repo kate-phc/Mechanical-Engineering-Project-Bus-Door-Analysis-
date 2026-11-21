@@ -27,11 +27,9 @@ A reusable starting point for projects in the Mechanical Engineering Department.
 |---|---|
 | `hardware/mechanical/` | CAD models, drawings, and fabrication files |
 | `hardware/bom.csv` | Bill of materials with quantities, units, and sourcing details |
-| `machine-skills/` | Machine commands, procedures, and skill instructions |
 | `simulation/` | Models, scripts, assumptions, and simulation results |
 | `docs/` | Assembly, setup, operation, and maintenance instructions |
 | `media/` | Images, GIFs, and links to demonstration videos |
-| `experiments/` | Procedures, raw data, and results |
 | `publications/` | Project-related journal and conference papers |
 
 ## Kinematic Model
