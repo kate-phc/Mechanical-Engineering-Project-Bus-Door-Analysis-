@@ -25,7 +25,7 @@
 
 ### Simulation Results
 
-  With the prescribed sinusoidal wave (ω = 0.5 rad/s), the simulation was executed over a complete 12.6 s opening-and-closing cycle. The door swings outward along a smooth circular arc before tucking into the open position, yielding a net lateral opening width of ∆x = 172.8 mm, a peak outward clearance of ∆y_max = 89 mm, and a fully open outward offset of ∆y_open = 29.8 mm. Both right edge and left edge of the door undergo identical net lateral displacements and identical clearance across the 0° to 160° crank sweep. As both edges maintain a constant relative spacing at every instant, the door remains parallel to the wall with zero angular rotation.
+  With the prescribed sinusoidal wave (ω = 0.5 rad/s), the simulation was executed over a complete 12.6 s opening-and-closing cycle. The door swings outward along a smooth circular arc before tucking into the open position, yielding a net lateral opening width of ∆x = 172.8 mm, a peak outward clearance of ∆y_max = 89 mm, and a fully open outward offset of ∆y_open = 29.8 mm. Both right edge and left edge of the door undergo identical net lateral displacements and identical clearance across the 0° to 160.43° crank sweep. As both edges maintain a constant relative spacing at every instant, the door remains parallel to the wall with zero angular rotation.
 
 | 2D Door Trajectory (X vs. Y) | Position & Rod Angle vs. Time |
 | :---: | :---: |
@@ -148,7 +148,7 @@ F&=r_2\alpha_2\cos\theta_2-r_2\omega_2^2\sin\theta_2-r_3\omega_3^2\sin\theta_3+r
 | Net lateral opening width ∆x | 172.8 mm | 172.8 mm |
 | Peak outward clearance ∆y_max | 89.0 mm | 89 mm |
 | Fully open outward offset ∆y_open | 29.8 mm | 29.8 mm |
-| Crank sweep | 160.43° | 0° to 160° |
+| Crank sweep | 160.43° | 160.43° |
 | Door rotation | 0 | 0 |
 
   The symbolic results agree with the Simscape Multibody simulation, confirming the closed-form kinematic model.
