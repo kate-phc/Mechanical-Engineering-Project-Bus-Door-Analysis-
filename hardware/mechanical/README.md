@@ -7,7 +7,7 @@ Store native CAD files, drawings, assembly references, and fabrication files her
 
 This directory contains the 3D CAD assembly, 2D engineering drawings, and 3D printing preparation files for the **Bus Swing-Plug Door Mechanism**. All mechanical components were designed and assembled in **Autodesk Fusion 360**.
 
-## Design & Prototype Overview
+## Design & Prototype Overview (`docs/readme/`)
 
 | 3D CAD Assembly (Fusion 360) | Assembled Physical Prototype |
 | :---: | :---: |
