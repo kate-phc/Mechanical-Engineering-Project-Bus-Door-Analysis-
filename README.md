@@ -10,7 +10,7 @@
             2. 6730376821 Pimmada Phayoongtham (Multibody Simulation)\
             3. 6730547821 Suphitchaya Kongthai (Physical Prototyping)
 - **Status:** Planning
-- **Last updated:** [YYYY-MM-DD]
+- **Last updated:** [2026-11-20]
 
 ## Repository structure
 
