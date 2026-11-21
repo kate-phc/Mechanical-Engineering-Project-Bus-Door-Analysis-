@@ -37,7 +37,6 @@
 2. Open **MATLAB R2026a** and set the Current Folder to the repository root directory.
 3. Right-click both `simulation/` and `hardware/mechanical/` → **Add to Path** → **Selected Folders and Subfolders** so Simscape locates all `.step` CAD files.
 4. Open `simulation/multibody_bus_door_analysis.slx`, and click **Run** to launch the 3D Mechanics Explorer animation and update the **Scope** and **XY Graph** plots.
-5. Open `simulation/Mechanism.mlx` and click **Run All** to generate the symbolic kinematic verification plots.
 
 
 
