@@ -1,14 +1,5 @@
 # Mechanical Engineering Project Template
 
-A reusable starting point for projects in the Mechanical Engineering Department. Use this repository as a template to organize a project’s mechanical design, electronics, software, machine skills, simulation, documentation, experiments, and publications.
-
-## Getting started
-
-1. Select **Use this template** on GitHub to create a repository for your project.
-2. Rename the project in this README and update the project summary, team, and objectives.
-3. Review the folder READMEs and replace the examples with project-specific information.
-4. Create GitHub Issues for tasks and record important design decisions and test results.
-5. Check the license placeholder and select appropriate terms before sharing or reusing project work.
 
 ## Project overview
 
@@ -53,10 +44,3 @@ As shown in the kinematic diagram, the outward-plug bus door is a planar 5-link,
 
 **Workspace:** Across the 0° to 160° crank sweep, every point on the door traces an identical circular arc with a single-point lateral displacement of Δx = 172.8 mm and a peak outward clearance of Δy<sub>max</sub> = 89.0 mm (settling at Δy<sub>open</sub> = 29.8 mm when fully open). Accounting for the width of the door panel, the total swept physical workspace spans Δx<sub>total</sub> = 341.1 mm horizontally by 89.0 mm outward.
 
-## Collaboration and file practices
-
-Use descriptive filenames and commit messages. Record units, revisions, software versions, and assumptions. Keep editable source files where practical. Avoid committing credentials, private data, temporary files, or duplicate exports. Consider Git LFS for large CAD, simulation, and video files.
-
-## Safety and validation
-
-Document hazards, safeguards, and operating limits before testing hardware. Validate important calculations and simulation results against measurements where practical.
